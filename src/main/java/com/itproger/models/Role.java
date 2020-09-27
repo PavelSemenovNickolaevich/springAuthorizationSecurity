@@ -1,6 +1,9 @@
 package com.itproger.models;
 
-public enum Role {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.web.bind.annotation.GetMapping;
+
+public enum Role implements GrantedAuthority {
     USER("Пользователь"),
     ADMIN("Администратор"),
     REDACTOR("Редактор");
@@ -14,4 +17,10 @@ public enum Role {
     public String getRole() {
         return role;
     }
+
+    @Override
+    public String getAuthority() {
+        return name();
+    }
 }
+

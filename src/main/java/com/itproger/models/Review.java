@@ -12,6 +12,10 @@ public class Review {
 
     private String title, text;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private User author;
+
     public Long getReview_id() {
         return review_id;
     }
@@ -39,8 +43,17 @@ public class Review {
     public Review() {
     }
 
-    public Review(String title, String text) {
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
+
+    public Review(String title, String text, User user) {
         this.title = title;
         this.text = text;
+        this.author = user;
     }
 }

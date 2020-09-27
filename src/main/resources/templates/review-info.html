@@ -13,6 +13,7 @@
     <div th:each="rev : ${review}">
         <h3 th:text="${rev.title}" />
         <p th:text="${rev.text}" />
+        <p><b>Автор: </b><span th:text="${rev.author.username}" /></p>
         <form th:action="@{/reviews/} + ${rev.review_id} + @{/delete}" method="post">
             <button class="btn btn-danger" type="submit">Удалить</button>
         </form><br>
