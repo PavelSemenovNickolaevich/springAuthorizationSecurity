@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>{{title}}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container mt-5">
+    <h1 th:text="${title}" />
+
+    <form th:action="@{/reviews-add}" method="post">
+        <input type="text" name="title" placeholder="Введите название" class="form-control"><br>
+        <textarea name="text" placeholder="Введите название" class="form-control"></textarea><br>
+        <button type="submit" class="btn btn-success">Добавить</button>
+    </form>
+    <h3 class="mt-2">Все отзывы</h3>
+
+    <div th:each="row : ${reviews}">
+        <h3 class="mt-2" th:text="${row.title}" />
+        <p th:text="${row.text}" />
+        <a class="btn btn-warning" th:href="@{/reviews/} + ${row.review_id}">Детальнее</a>
+    </div>
+</div>
+
+<div th:replace="blocks/footer :: footer"></div>
+</body>
+</html>
