@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.annotation.security.RolesAllowed;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -137,6 +138,10 @@ public class MainController {
         userRepository.save(user);
         return "updateUser";
     }
+
+
+
+
 }
 
 

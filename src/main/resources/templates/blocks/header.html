@@ -11,6 +11,9 @@
             <a href="/reg" class="btn btn-success mr-2">Регистрация</a>
             <a href="/login" class="btn btn-warning">Войти</a>
         </div>
+        <form sec:authorize="hasAuthority('ADMIN')" th:action="@{/admin}" method="get">
+            <input type="submit" class="btn btn-warning" value="Панель админа"/>
+        </form>
         <div sec:authorize="isFullyAuthenticated()">
             <form th:action="@{/logout}" method="post">
                 <input type="submit" class="btn btn-danger" value="Выйти"/>

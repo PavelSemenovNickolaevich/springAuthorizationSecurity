@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Панель администратора</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+<header th:insert="blocks/header :: header"></header>
+
+<div class="container">
+    <h1>Все пользователи</h1>
+    <div th:each="row : ${users}">
+        <h3 class="mt-2" name="Пользователь" th:text="${row.username}"/>
+        <p><b>Email: </b><span th:text="${row.email}"/><b> Роль на сайте: </b><span th:text="${row.getRoles()}"/>></p>
+        <a class="btn btn-warning" th:href="@{/admin/user-} + ${row.id}">Отзывы автора</a>
+        </div>
+</div>
+
+<div th:replace=" blocks/footer :: footer">
+    </div>
+ </body>
+</html>
+
+
