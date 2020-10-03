@@ -12,7 +12,12 @@
             <a href="/login" class="btn btn-warning">Войти</a>
         </div>
         <form sec:authorize="hasAuthority('ADMIN')" th:action="@{/admin}" method="get">
-            <input type="submit" class="btn btn-warning" value="Панель админа"/>
+            <input type="submit" class="btn btn-warning admin" value="Панель админа"/>
+            <style type="text/css">
+                .admin {
+                    margin-right: 5px;
+                }
+            </style>
         </form>
         <div sec:authorize="isFullyAuthenticated()">
             <form th:action="@{/logout}" method="post">
